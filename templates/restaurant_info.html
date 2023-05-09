@@ -2,11 +2,11 @@
 {% load static %}
 {% block content %}
 <div class="container2">
-    <div class="page_description">
+    <div class="place_description">
         <h1>{{ restaurant.name }}</h1>
-    </div>
-    <div class="center_wrap">
-        <iframe src="{{ restaurant.map_src }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p>위치: {{ restaurant.district }}</p>
+        <p>음식 종류: {{ restaurant.food_type }}</p>
+        <iframe src="{{ restaurant.map_src }}" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>
 {% endblock %}

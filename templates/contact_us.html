@@ -10,11 +10,8 @@
         </div>
     {% endfor %}
     {% endif %}
-    <div class="page_description">
-        <h1>CONTACT US</h1>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-    </div>
-    <div class="signup_wrap">
+    <div class="signup_wrap" id="contact_field">
+    <h1>CONTACT US</h1>
         <form method="post" action="{% url 'group5:contact_us' %}">
             {% csrf_token %}
             {% if form.errors %}
