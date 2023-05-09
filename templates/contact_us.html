@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container2">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+            <strong>{{ message.tags }}</strong>
+            <ul><li>{{ message.message }}</li></ul>
+        </div>
+    {% endfor %}
+    {% endif %}
+    <div class="page_description">
+        <h1>CONTACT US</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+    </div>
+    <div class="signup_wrap">
+        <form method="post" action="{% url 'group5:contact_us' %}">
+            {% csrf_token %}
+            {% if form.errors %}
+            <div class="alert error" role="alert">
+                {% for field in form %}
+                {% if field.errors %}
+                <div>
+                    <strong>{{ field.label }}</strong>
+                    {{ field.errors }}
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div class="input_field">
+                <label for="name">Name</label>
+                <input type="text" name="name" value="{{ form.name.value|default_if_none:'' }}">
+            </div>
+            <div class="input_field">
+                <label for="email">Email</label>
+                <input type="text" name="email" value="{{ form.email.value|default_if_none:'' }}">
+            </div>
+            <div class="input_field">
+                <label for="message">Message</label><br>
+                <textarea name="message" rows="10">{{ form.message.value|default_if_none:'' }}</textarea>
+            </div>
+            <div class="center_wrap">
+                <button type="submit" class="button">SEND</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

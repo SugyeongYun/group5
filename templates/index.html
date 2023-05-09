@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container2">
+    <div id="main_wrap">
+        <div id="main_img_wrap">
+                <img src="{% static 'img/main_img2.jpg' %}">
+        </div>
+        <div id="main_text_wrap">
+            <h1>당신 주변의 맛집을 둘러보세요.</h1>
+            <div class="center_wrap"><a href="{% url 'group5:discover' %}" class="btn btn-dark">Discover</a></div>
+        </div>
+    </div>
+</div>
+<div class="container2">
+    <div class="center_wrap">
+        <div id="description_wrap">
+            <h1>OUR GOALS</h1>
+            <p id="site_description">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        </div>
+    </div>
+    <div id="description_box">
+        <div class="quote_icon">
+            <img src="{% static 'img/quote-icon.png' %}">
+        </div>
+        <img src="{% static 'img/description_img2.jpg' %}" width="60%">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam bibendum condimentum massa sed porttitor. Quisque suscipit massa a ex aliquam commodo. Quisque id massa nibh. Cras finibus, diam interdum vestibulum condimentum, nunc velit commodo felis, non luctus nulla sapien vel felis.</p>
+    </div>
+</div>
+{% endblock %}

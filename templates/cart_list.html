@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container2">
+    <div class="page_description">
+        <h1>MY WISH LIST</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+            <strong>{{ message.tags }}</strong>
+            <ul><li>{{ message.message }}</li></ul>
+        </div>
+    {% endfor %}
+    {% endif %}
+    <div class="album">
+        {% for cart_item in cart_items %}
+        <div class="restaurant_wrap">
+            <img class="restaurant_img" src="{% get_static_prefix %}img/restaurant/{{ cart_item.restaurant.id }}.jpg">
+            <div class="restaurant_footer">
+                <p>{{ cart_item.restaurant.name }}</p>
+                <a href="{% url 'group5:delete_item' cart_item.id %}"><img class="heart" src="{% static 'img/trashcan.png' %}"></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

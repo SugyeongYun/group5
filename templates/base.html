@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Group 5</title>
+  <script src="https://kit.fontawesome.com/50987e8a7d.js" crossorigin="anonymous"></script>
+  <script scr="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+  <link rel="stylesheet" media="screen and (max-width:1599px)" href="{% static 'css/style_1280.css' %}">
+  <link rel="stylesheet" media="screen and (min-width:1600px)" href="{% static 'css/style_1600.css' %}">
+</head>
+
+<body>
+  {% include 'navbar.html' %}
+  {% block content %}
+  {% endblock %}
+  <script>
+  </script>
+  {% block script %}
+  {% endblock %}
+  {% include 'footer.html' %}
+</body>
+
+</html>

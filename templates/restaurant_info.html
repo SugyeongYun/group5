@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container2">
+    <div class="page_description">
+        <h1>{{ restaurant.name }}</h1>
+    </div>
+    <div class="center_wrap">
+        <iframe src="{{ restaurant.map_src }}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+{% endblock %}

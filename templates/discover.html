@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container2">
+    <div class="page_description">
+        <h1>DISCOVER</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+    </div>
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+            <strong>{{ message.tags }}</strong>
+            <ul><li>{{ message.message }}</li></ul>
+        </div>
+    {% endfor %}
+    {% endif %}
+    <div class="album">
+        {% for restaurant in restaurants %}
+        <div class="restaurant_wrap">
+            <img class="restaurant_img" src="{% get_static_prefix %}img/restaurant/{{ restaurant.id }}.jpg">
+            <div class="restaurant_footer">
+                <a href="{% url 'group5:restaurant_info' restaurant.id %}"><p>{{ restaurant.name }}</p></a>
+                <a href="{% url 'group5:add_item' restaurant.id %}"><img class="heart" src="{% static 'img/heart_empty.png' %}"></a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
