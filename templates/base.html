@@ -10,7 +10,6 @@
   <script scr="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
   <link rel="stylesheet" media="screen and (max-width:1599px)" href="{% static 'css/style_1280.css' %}">
   <link rel="stylesheet" media="screen and (min-width:1600px)" href="{% static 'css/style_1600.css' %}">
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,9 +17,9 @@
   {% block content %}
   {% endblock %}
   <script>
-    {% block script %}
-    {% endblock %}
   </script>
+  {% block script %}
+  {% endblock %}
   {% include 'footer.html' %}
 </body>
 
