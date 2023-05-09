@@ -89,5 +89,21 @@ $('#pref_others .submit').click(function() {
     localStorage.setItem('date', $('#date').val());
     localStorage.setItem('person_cnt', $('#person_cnt').val());
     localStorage.setItem('price', $('#price').val());
+    const category = localStorage.getItem('category');
+    const date = localStorage.getItem('date');
+    const person_cnt = localStorage.getItem('person_cnt');
+    const price = localStorage.getItem('price');
+    $.ajax({
+        // 여기부터
+        url: 'test/',
+        type: 'POST',
+        data:JSON.stringify(myValue),
+        success:function(json){
+            console.log("data pass success",json.result);
+        },
+        error : function(xhr,errmsg,err) {
+        console.log(xhr.status + ": " + xhr.responseText); 
+        }
+      });
 });
 {% endblock %}
