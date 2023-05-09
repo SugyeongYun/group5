@@ -407,6 +407,7 @@ option {
 .album {
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
 }
 .restaurant_wrap {
     padding: 20px;
@@ -528,4 +529,22 @@ option {
 }
 .place_description p{
     color:#474747;
+}
+
+.preference_selection {
+    padding:20px;
+}
+.select_wrap {
+    padding: 20px;
+	background-color: #fff;
+	margin: 20px;
+	box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+.select_wrap img {
+    width:320px;
+    height:240px;
+}
+.preference_selection h2{
+    text-align: center;
 }

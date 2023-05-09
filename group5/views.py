@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Restaurant, CartItem, Question, Preference
 from .forms import QuestionForm, PreferenceForm
 from django.utils import timezone
+import json
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def index(request):
@@ -69,7 +71,21 @@ def food_planner(request):
             return redirect('group5:food_planner')
     else:
         form = PreferenceForm()
-    return render(request, 'food_planner.html')
+    return render(request, 'food_planner2.html')
+
+@csrf_exempt
+@login_required(login_url='common:login')
+def food_planner2(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        # do something
+        print(data)
+
+        context = {
+            'result': data,
+        }
+    return JsonResponse(context)
+
 
 def question_create(request):
     if request.method == 'POST':
