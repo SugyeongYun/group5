@@ -32,3 +32,15 @@ class Question(models.Model):
 
     def __str__(self):
         return self.message[:20]
+
+
+class Preference(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    category = models.CharField(max_length=20)
+    date = models.DateTimeField()
+    person_cnt = models.IntegerField()
+    price = models.IntegerField()
+    create_date = models.DateTimeField()
+    
+    def __str__(self):
+        return self.user.username+" "+str(self.create_date)

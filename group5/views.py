@@ -3,8 +3,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
-from .models import Restaurant, CartItem, Question
-from .forms import QuestionForm
+from .models import Restaurant, CartItem, Question, Preference
+from .forms import QuestionForm, PreferenceForm
 from django.utils import timezone
 # Create your views here.
 
@@ -54,6 +54,22 @@ def my_cart(request):
         context = {'cart_items': cart_items}
         return render(request, 'cart_list.html', context)
     return redirect('group5:my_cart')
+
+@login_required(login_url='common:login')
+def food_planner(request):
+    if request.method == 'POST':
+        form = PreferenceForm(request.POST)
+        if form.is_valid():
+            user = User.objects.get(pk=request.user.pk)
+            preference = form.save(commit=False)
+            preference.user = user
+            preference.create_date = timezone.now()
+            preference.save()
+            messages.success(request, 'Form submitted')
+            return redirect('group5:food_planner')
+    else:
+        form = PreferenceForm()
+    return render(request, 'food_planner.html')
 
 def question_create(request):
     if request.method == 'POST':
