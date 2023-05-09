@@ -17,7 +17,7 @@
     <div class="album">
         {% for cart_item in cart_items %}
         <div class="restaurant_wrap">
-            <img class="restaurant_img" src="{% get_static_prefix %}img/restaurant/{{ cart_item.restaurant.id }}.jpg">
+            <img class="restaurant_img" src="{% get_static_prefix %}img/restaurant/{{ cart_item.restaurant.name }}.jpg">
             <div class="restaurant_footer">
                 <p>{{ cart_item.restaurant.name }}</p>
                 <a href="{% url 'group5:delete_item' cart_item.id %}"><img class="heart" src="{% static 'img/trashcan.png' %}"></a>

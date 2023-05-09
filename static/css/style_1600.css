@@ -406,7 +406,7 @@ option {
 
 .album {
     display:flex;
-    flex:wrap;
+    flex-wrap:wrap;
 }
 .restaurant_wrap {
     padding: 20px;

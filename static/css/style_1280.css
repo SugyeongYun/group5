@@ -364,7 +364,7 @@ option {
 
 .album {
     display:flex;
-    flex:wrap;
+    flex-wrap:wrap;
     margin-bottom:40vh;
 }
 .restaurant_wrap {
