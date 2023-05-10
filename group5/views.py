@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import Restaurant, CartItem, Question, Preference
 from .forms import QuestionForm, PreferenceForm
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
+import json
+import math
+
 # Create your views here.
 
 def index(request):
@@ -57,19 +61,18 @@ def my_cart(request):
 
 @login_required(login_url='common:login')
 def food_planner(request):
-    if request.method == 'POST':
-        form = PreferenceForm(request.POST)
-        if form.is_valid():
-            user = User.objects.get(pk=request.user.pk)
-            preference = form.save(commit=False)
-            preference.user = user
-            preference.create_date = timezone.now()
-            preference.save()
-            messages.success(request, 'Form submitted')
-            return redirect('group5:food_planner')
-    else:
-        form = PreferenceForm()
     return render(request, 'food_planner.html')
+
+@csrf_exempt
+@login_required(login_url='common:login')
+def recommendation(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        # do something
+        context = {
+            'result': math.pi,
+        }
+    return JsonResponse(context)
 
 def question_create(request):
     if request.method == 'POST':

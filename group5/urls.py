@@ -12,4 +12,5 @@ urlpatterns = [
     path('mycart/', views.my_cart, name="my_cart"),
     path('contactus/', views.question_create, name="contact_us"),
     path('foodplanner/', views.food_planner, name="food_planner"),
+    path('foodplanner/recommendation/', views.recommendation, name="recommendation"),
 ]
