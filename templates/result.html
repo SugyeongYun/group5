@@ -5,7 +5,7 @@
     <div class="result_wrap">
         <h2>당신에게 추천드릴 레스토랑은 다음과 같습니다.</h2>
         <div id="restaurant1_wrap">
-            <img src="{% get_static_prefix %}img/restaurant/{{ restaurant.name }}.jpg"><br>
+            <img src="{% get_static_prefix %}img/restaurant/{{ restaurant1.name }}.jpg"><br>
             <a href="{% url 'group5:restaurant_info' restaurant1.id %}">{{ restaurant1.name }}</a>
         </div>
         <h2>다른 레스토랑도 둘러보세요</h2>

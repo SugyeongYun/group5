@@ -321,7 +321,7 @@ option {
     margin-left: 0px;
 }
 #description_box{
-    width: 75%;
+    width: 60vw;
     margin: 0 auto 30vh;
     text-align: center;
     border: 2px solid #424242;
@@ -365,6 +365,7 @@ option {
 .album {
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
     margin-bottom:40vh;
 }
 .restaurant_wrap {
@@ -469,7 +470,34 @@ option {
     appearance: none;
 }
 
-.place_description {
-    margin: 20vh 15vw 20vh 15vw;
+.contact_wrap{
+    margin: 20vh 15vw 0vh 15vw;
     text-align: center;
+}
+
+.place_description {
+    margin: 20vh auto;
+    width:800px;
+    padding: 30px;
+	background-color: #fff;
+	box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+}
+.place_description p{
+    color:#474747;
+}
+.result_wrap {
+    margin: 10vh auto;
+    text-align: center;
+}
+.result_wrap a{
+    text-decoration: underline;
+}
+
+#restaurant1_wrap img{
+    margin-top:20px;
+    width: 20vw;
+}
+#restaurant23_wrap a{
+    line-height: 1.5;
 }

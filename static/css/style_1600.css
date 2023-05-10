@@ -359,7 +359,7 @@ option {
     font-size: 1.2rem;
 }
 #description_box{
-    width: 75%;
+    width: 60vw;
     margin: 0 auto 30vh;
     text-align: center;
     border: 2px solid #424242;
@@ -407,6 +407,7 @@ option {
 .album {
     display:flex;
     flex-wrap:wrap;
+    justify-content: center;
 }
 .restaurant_wrap {
     padding: 20px;
@@ -538,8 +539,8 @@ option {
 }
 
 #restaurant1_wrap img{
-    margin-top:20px;
-    width: 20vw;
+    margin:20px auto;
+    height:25vh;
 }
 #restaurant23_wrap a{
     line-height: 1.5;
