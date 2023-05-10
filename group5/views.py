@@ -8,7 +8,7 @@ from .forms import QuestionForm, PreferenceForm
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 import json
-import math
+from .ai import*
 
 # Create your views here.
 
@@ -68,9 +68,14 @@ def food_planner(request):
 def recommendation(request):
     if request.method == 'POST':
         data = json.loads(request.body)
-        # do something
+        input_category = data['category']
+        date_raw = data['date'].split('T')
+        input_time = get_time(date_raw[1])
+        input_bungi = get_bungi(date_raw[0])
+        input_day = get_day(date_raw[0])
+        ans = get_recommendation(input_category, [input_time, input_bungi, input_day, data['person_cnt'], data['price']]) # 장르, [시간, 분기, 요일, 인원수, 인당금액]
         context = {
-            'result': math.pi,
+            'result': ans[0][0],
         }
     return JsonResponse(context)
 
