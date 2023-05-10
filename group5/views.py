@@ -6,8 +6,6 @@ from django.contrib import messages
 from .models import Restaurant, CartItem, Question, Preference
 from .forms import QuestionForm, PreferenceForm
 from django.utils import timezone
-from django.views.decorators.csrf import csrf_exempt
-import json
 from .ai import*
 
 # Create your views here.
@@ -61,23 +59,27 @@ def my_cart(request):
 
 @login_required(login_url='common:login')
 def food_planner(request):
-    return render(request, 'food_planner.html')
-
-@csrf_exempt
-@login_required(login_url='common:login')
-def recommendation(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        input_category = data['category']
-        date_raw = data['date'].split('T')
-        input_time = get_time(date_raw[1])
-        input_bungi = get_bungi(date_raw[0])
-        input_day = get_day(date_raw[0])
-        ans = get_recommendation(input_category, [input_time, input_bungi, input_day, data['person_cnt'], data['price']]) # 장르, [시간, 분기, 요일, 인원수, 인당금액]
-        context = {
-            'result': ans[0][0],
-        }
-    return JsonResponse(context)
+        form = PreferenceForm(request.POST)
+        if form.is_valid():
+            preference = form.save(commit=False)
+            input_time = get_time(preference.date)
+            input_bungi = get_bungi(preference.date)
+            input_day = get_day(preference.date)
+            restaurants = get_recommendation(preference.category, [input_time, input_bungi, input_day, preference.person_cnt, preference.price])
+            restaurant1 = Restaurant.objects.get(name=restaurants[0])
+            restaurant2 = Restaurant.objects.get(name=restaurants[1])
+            restaurant3 = Restaurant.objects.get(name=restaurants[2])
+            context = {
+                'restaurant1':restaurant1,
+                'restaurant2':restaurant2,
+                'restaurant3':restaurant3,
+            }
+            return render(request, 'result.html', context)
+    else:
+        form = PreferenceForm()
+    context = {'form': form}
+    return render(request, 'food_planner.html', context)
 
 def question_create(request):
     if request.method == 'POST':
