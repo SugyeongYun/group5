@@ -11,4 +11,4 @@ class QuestionForm(forms.ModelForm):
 class PreferenceForm(forms.ModelForm):
     class Meta:
         model = Preference
-        fields = ['category', 'date', 'person_cnt', 'price']
+        fields = ['date', 'person_cnt', 'price']

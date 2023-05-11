@@ -2,10 +2,25 @@
 {% load static %}
 {% block content %}
 <div class="container2">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+            <strong>{{ message.tags }}</strong>
+            <ul><li>{{ message.message }}</li></ul>
+        </div>
+    {% endfor %}
+    {% endif %}
     <div class="place_description">
-        <h1>{{ restaurant.name }}</h1>
-        <p>위치: {{ restaurant.district }}</p>
-        <p>음식 종류: {{ restaurant.food_type }}</p>
+        <div class="place_description_header">
+            <div class="header_left">
+                <h1>{{ restaurant.name }}</h1>
+                <p>위치: {{ restaurant.district }}</p>
+                <p>음식 종류: {{ restaurant.food_type }}</p>
+            </div>
+            <div class="header_right">
+                <a href="{% url 'group5:add_item' restaurant.id %}"><img class="heart_big" src="{% static 'img/heart_empty.png' %}"></a>
+            </div>
+        </div>
         <iframe src="{{ restaurant.map_src }}" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 </div>

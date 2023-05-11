@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -14,7 +14,7 @@ def index(request):
     return render(request, 'index.html')
 
 def discover(request):
-    restaurant_list = Restaurant.objects.order_by('id')
+    restaurant_list = Restaurant.objects.order_by('name')
     context = {'restaurants': restaurant_list}
     return render(request, 'discover.html', context)
 
@@ -66,7 +66,7 @@ def food_planner(request):
             input_time = get_time(preference.date)
             input_bungi = get_bungi(preference.date)
             input_day = get_day(preference.date)
-            restaurants = get_recommendation(preference.category, [input_time, input_bungi, input_day, preference.person_cnt, preference.price])
+            restaurants = get_recommendation(request.POST['category'], [input_time, input_bungi, input_day, preference.person_cnt, preference.price])
             restaurant1 = Restaurant.objects.get(name=restaurants[0])
             restaurant2 = Restaurant.objects.get(name=restaurants[1])
             restaurant3 = Restaurant.objects.get(name=restaurants[2])

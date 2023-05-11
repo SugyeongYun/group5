@@ -27,8 +27,16 @@
             </div>
             {% endif %}
             <div class="input_field">
-                <label for="category">Category</label>
-                <input type="text" name="category" value="{{ form.category.value|default_if_none:'' }}">
+                <label for="category">Category</label><br>
+                <select name="category" id="category-select">
+                    <option value="고기">고기</option>
+                    <option value="국수">국수</option>
+                    <option value="백반">백조</option>
+                    <option value="아시안">아시안</option>
+                    <option value="양식">양식</option>
+                    <option value="아시안">일식</option>
+                    <option value="중식">중식</option>
+                </select>
             </div>
             <div class="input_field">
                 <label for="date">Date</label>

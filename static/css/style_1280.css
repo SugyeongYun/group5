@@ -315,7 +315,7 @@ option {
 }
 #site_description {
     width: 100%;
-    font-size: 16px;
+    font-size: 20px;
     color: #191919;
     text-align: center;
     margin-left: 0px;
@@ -328,6 +328,7 @@ option {
     padding: 40px;
     border-radius: 20px;
     display: flow-root;
+    font-size: 20px;
 }
 .quote_icon {
     width: 100%;
@@ -378,6 +379,7 @@ option {
 .restaurant_img {
     height: 300px;
     width: 300px;
+    object-fit: cover;
 }
 
 .restaurant_footer {
@@ -389,7 +391,9 @@ option {
 .heart {
     width:25px;
 }
-
+.heart_big {
+    width:35px;
+}
 .alert{
     position:relative;
     padding:1rem 1rem;
@@ -500,4 +504,17 @@ option {
 }
 #restaurant23_wrap a{
     line-height: 1.5;
+}
+.signup_wrap .input_field select{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+    font-size: 14px;
+    vertical-align: middle;
+    border: 1px solid grey;
+}
+.place_description_header {
+    display: flex;
+    justify-content: space-between;
 }
