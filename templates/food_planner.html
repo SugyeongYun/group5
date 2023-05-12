@@ -27,7 +27,7 @@
             </div>
             {% endif %}
             <div class="input_field">
-                <label for="category">Category</label><br>
+                <label for="category">무슨 음식을 드실 건가요?</label><br>
                 <select name="category" id="category-select">
                     <option value="고기">고기</option>
                     <option value="국수">국수</option>
@@ -39,15 +39,15 @@
                 </select>
             </div>
             <div class="input_field">
-                <label for="date">Date</label>
+                <label for="date">언제 방문하실 건가요?</label>
                 <input type="datetime-local" name="date" value="{{ form.date.value|default_if_none:'' }}">
             </div>
             <div class="input_field">
-                <label for="person_cnt">Size of party</label>
+                <label for="person_cnt">몇 명이 오실 건가요?</label>
                 <input type="text" name="person_cnt" value="{{ form.person_cnt.value|default_if_none:'' }}">
             </div>
             <div class="input_field">
-                <label for="price">Price per person</label>
+                <label for="price">인당 예산은 어느 정도신가요?</label>
                 <input type="text" name="price" value="{{ form.price.value|default_if_none:'' }}">
             </div>
             <div class="center_wrap">
